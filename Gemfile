@@ -10,9 +10,10 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass', '~> 3.3.6'
-gem "paperclip", "~> 3.0"
+gem "paperclip"
 gem "paperclip-dropbox", ">= 1.1.7"
 gem "figaro"
+gem 'devise'
 
 group :production do
   gem 'pg'
@@ -20,9 +21,9 @@ group :production do
 end
 
 group :development, :test do
-  gem 'listen', '~> 3.1.5'
+  # gem 'listen', '~> 3.1.5'
   gem 'sqlite3'
-  gem 'spring'
+ #  gem 'spring'
  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 

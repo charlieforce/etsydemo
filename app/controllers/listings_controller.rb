@@ -1,7 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
-  # before_filter :authenticate_user!, only: [:seller, :new, :create, :edit, :update, :destroy]
-  # before_filter :authenticate_with_http_digest, only: [:seller, :new, :create, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:seller, :new, :create, :edit, :update, :destroy]
   before_filter :check_user, only: [:edit, :update, :destroy]
 
   def seller
@@ -94,9 +93,9 @@ class ListingsController < ApplicationController
       params.require(:listing).permit(:name, :description, :price, :image)
     end
 
-    # def check_user
-    #   if current_user != @listing.user
-    #     redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
-    #   end
-    # end
+    def check_user
+      if current_user != @listing.user
+        redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
+      end
+    end
 end
