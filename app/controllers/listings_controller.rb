@@ -3,15 +3,15 @@ class ListingsController < ApplicationController
   before_filter :authenticate_user!, only: [:seller, :new, :create, :edit, :update, :destroy]
   before_filter :check_user, only: [:edit, :update, :destroy]
 
-  def seller
-    @listings = Listing.where(user: current_user).order("created_at DESC")
-  end
+    def seller
+      @listings = Listing.where(user: current_user).order("created_at DESC")
+    end
 
-  # GET /listings
-  # GET /listings.json
-  def index
-    @listings = Listing.all.order("created_at DESC")
-  end
+    # GET /listings
+    # GET /listings.json
+    def index
+      @listings = Listing.all.order("created_at DESC")
+    end
 
   # GET /listings/1
   # GET /listings/1.json
@@ -32,7 +32,7 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
-    # 
+    #
     # if current_user.recipient.blank?
     #   Stripe.api_key = ENV["STRIPE_API_KEY"]
     #   token = params[:stripeToken]
@@ -82,20 +82,19 @@ class ListingsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_listing
-      @listing = Listing.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_listing
+    @listing = Listing.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def listing_params
-      params.require(:listing).permit(:name, :description, :price, :image)
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def listing_params
+    params.require(:listing).permit(:name, :description, :price, :image)
+  end
+
+  def check_user
+    if current_user != @listing.user
+      redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
     end
-#
-    def check_user
-      if current_user != @listing.user
-        redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
-      end
-    end
+  end
 end
