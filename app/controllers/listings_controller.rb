@@ -32,20 +32,20 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
-
-    if current_user.recipient.blank?
-      Stripe.api_key = ENV["STRIPE_API_KEY"]
-      token = params[:stripeToken]
-
-      recipient = Stripe::Recipient.create(
-        :name => current_user.name,
-        :type => "individual",
-        :bank_account => token
-        )
-
-      current_user.recipient = recipient.id
-      current_user.save
-    end
+    # 
+    # if current_user.recipient.blank?
+    #   Stripe.api_key = ENV["STRIPE_API_KEY"]
+    #   token = params[:stripeToken]
+    #
+    #   recipient = Stripe::Recipient.create(
+    #     :name => current_user.name,
+    #     :type => "individual",
+    #     :bank_account => token
+    #     )
+    #
+    #   current_user.recipient = recipient.id
+    #   current_user.save
+    # end
 
     respond_to do |format|
       if @listing.save
@@ -92,7 +92,7 @@ class ListingsController < ApplicationController
     def listing_params
       params.require(:listing).permit(:name, :description, :price, :image)
     end
-
+#
     def check_user
       if current_user != @listing.user
         redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
