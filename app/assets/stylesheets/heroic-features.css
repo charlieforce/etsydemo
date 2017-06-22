@@ -1,0 +1,36 @@
+/*
+ * Start Bootstrap - Heroic Features (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+.title-price{margin-top:30px;margin-bottom:0;color:black}
+.producttitle {
+    font-weight:bold;
+    font-size:1.6em;
+    padding:5px 0 5px 0;
+
+}
+.producttitle a {
+    text-decoration: none;
+    color: #333333;
+}
+.productprice {
+    border-top:1px solid #dadada;
+    padding-top:5px;
+}
+
+.pricetext {
+    font-weight:bold;
+    font-size:1.4em;
+}
+.hero-spacer {
+    margin-top: 50px;
+}
+
+.hero-feature {
+    margin-bottom: 30px;
+}
+
+footer {
+    margin: 50px 0;
+}

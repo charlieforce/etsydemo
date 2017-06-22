@@ -3,7 +3,7 @@
 @import "bootstrap";
 
 body {
-  background-color: #F5F5F1;
+  background-color: rgb(248, 249, 248);
   color: #333333;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -39,9 +39,15 @@ body {
     font-size: 18px;
   }
 }
+h1 h2 h3 h4 h5{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+p{
+  font-family: "DejaVu Sans";
+}
 .caption {
   h3 {
-    font-size: 17px;
+    //font-size: 17px;
     margin: 2px;
   }
   p {
